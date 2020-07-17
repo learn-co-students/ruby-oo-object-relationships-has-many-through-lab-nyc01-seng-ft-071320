@@ -20,7 +20,7 @@ class Doctor
     end
     def patients
         appointments.map do |appointment|
-            appointment #+ appointment.patient
+            appointment.push(appointment.patient)
         end
     end
 end
