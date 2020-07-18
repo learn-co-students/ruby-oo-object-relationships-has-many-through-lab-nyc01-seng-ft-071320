@@ -19,15 +19,18 @@ class Patient
         save
     end
 
-    def new_appointment (date, doctor)
-        new_appointment = Appointment.new(date, doctor, self)
+    def new_appointment (doctor, date)
+        new_appointment = Appointment.new(date, self, doctor)
+        # binding.pry
     end
 
     def appointments
-        Appointment.all.select {|each_appointment|each_appointment.patient=self}
+        Appointment.all.select {|each_appointment|each_appointment.patient==self}
     end
 
-    def doctor
+    def doctors
+        appointments
+        # binding.pry
         appointments.collect{|each_appointment|each_appointment.doctor}
     end
 end
